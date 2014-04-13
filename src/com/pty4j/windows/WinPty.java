@@ -13,6 +13,8 @@ import jtermios.windows.WinAPI;
 import java.io.File;
 import java.io.IOException;
 import java.nio.Buffer;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author traff
@@ -104,6 +106,11 @@ public class WinPty {
     public WinNT.HANDLE controlPipe;
     public WinNT.HANDLE dataPipe;
     public boolean open;
+
+    @Override
+    protected List getFieldOrder() {
+        return Arrays.asList("controlPipe", "dataPipe", "open");
+    }
   }
 
   public static final Kern32 KERNEL32 = (Kern32)Native.loadLibrary("kernel32", Kern32.class);
